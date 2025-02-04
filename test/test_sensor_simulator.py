@@ -14,6 +14,7 @@ sys.path.append('../')
 from quadrotor_simulator_py.sensor_simulator import SensorSimulator
 from quadrotor_simulator_py.utils import Pose, Rot3
 from quadrotor_simulator_py.map_tools import *
+from quadrotor_simulator_py.visualizer import *
 
 def score_results(res, correct, eps, test_name):
     rmse = math.sqrt(mean_squared_error(res, correct))
