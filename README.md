@@ -70,7 +70,7 @@ There are local tests for this function. The output of your
 function should match the image below.
 
 <img src="./img/ray_triangle_intersect1.png">
-![Pose 2](./img/ray_triangle_intersect2.png]
+<img src="./img/ray_triangle_intersect2.png">
 
 ### 1.2 `transform_to_camera_frame` (20 points)
 This function takes points in the world frame and converts them to the
@@ -80,8 +80,8 @@ sensor.
 There are local tests for this function. The output of your
 function should match the image below.
 
-![Camera 1](./img/transform_to_camera_frame1.png]
-![Camera 2](./img/transform_to_camera_frame2.png]
+<img src="./img/transform_to_camera_frame1.png">
+<img src="./img/transform_to_camera_frame2.png">
 
 ### 1.3 `project_to_image_plane` (20 points)
 This function projects the camera frame points to a depth image.
@@ -89,8 +89,8 @@ This function projects the camera frame points to a depth image.
 There are local tests for this function. The output of your
 function should match the image below.
 
-![Depth Image 1](./img/depth_image1.png]
-![Depth Image 2](./img/depth_image2.png]
+<img src="./img/depth_image1.png">
+<img src="./img/depth_image2.png">
 
 ## 2. Mapping (40 points)
 You will need to write the following functions:
@@ -151,14 +151,14 @@ a score based on the correct number of free and occupied cells your
 solution computes.
 
 #### Test 1 Results
-![](./img/og_part1_test1.png]
-![](./img/og_part2_test1.png]
-![](./img/og_part3_test1.png]
+<img src="./img/og_part1_test1.png">
+<img src="./img/og_part2_test1.png">
+<img src="./img/og_part3_test1.png">
 
 #### Test 2 Results
-![](./img/og_part1_test2.png]
-![](./img/og_part2_test2.png]
-![](./img/og_part3_test2.png]
+<img src="./img/og_part1_test2.png">
+<img src="./img/og_part2_test2.png">
+<img src="./img/og_part3_test2.png">
 
 **IMPORTANT**: Take care that your point, cell, and index lie within
 the grid extents. Unexpected raytracing behavior will occur if you do
