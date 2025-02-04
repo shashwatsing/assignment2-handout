@@ -69,7 +69,7 @@ In this function, you will write the code to this intersection.
 There are local tests for this function. The output of your
 function should match the image below.
 
-![Pose 1](./img/ray_triangle_intersect1.png]
+<img src="./img/ray_triangle_intersect1.png">
 ![Pose 2](./img/ray_triangle_intersect2.png]
 
 ### 1.2 `transform_to_camera_frame` (20 points)
