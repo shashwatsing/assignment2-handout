@@ -9,7 +9,9 @@ import open3d as o3d
 import cv2
 from sklearn.metrics import mean_squared_error
 
-sys.path.append('../')
+import os
+qs_path = os.path.dirname(os.path.abspath(__file__))+'/..'
+sys.path.append(qs_path)
 
 from quadrotor_simulator_py.sensor_simulator import SensorSimulator
 from quadrotor_simulator_py.utils import Pose, Rot3
@@ -93,9 +95,9 @@ def run_tests():
 
     score = 0.0
 
-    DATA_DIR = "../data/"
-    config = "../config/depth_sensor.yaml"
-    meshfile = "../mesh/scene1.ply"
+    DATA_DIR = qs_path+"/data/"
+    config = qs_path+"/config/depth_sensor.yaml"
+    meshfile = qs_path+"/mesh/scene1.ply"
 
     sensor_simulator = SensorSimulator(config, meshfile)
 
@@ -105,15 +107,15 @@ def run_tests():
     Twb = Pose()
     Twb.set_translation(np.array([2, -1, 1.5]))
     Twb.set_rotation(np.eye(3))
-    solutions_filepath = "../data/ray_mesh_intersect_solutions_pose1.npz"
+    solutions_filepath = qs_path+"/data/ray_mesh_intersect_solutions_pose1.npz"
     score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, True)
 
     world_frame_points = np.load(solutions_filepath)["world_frame_points"]
-    solutions_filepath = "../data/camera_frame_solutions_pose1.npz"
+    solutions_filepath = qs_path+"/data/camera_frame_solutions_pose1.npz"
     score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, True)
 
     camera_frame_points = np.load(solutions_filepath)["camera_frame_points"]
-    solutions_filepath = "../data/depth_image_solutions_pose1.npz"
+    solutions_filepath = qs_path+"/data/depth_image_solutions_pose1.npz"
     score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, True)
 
     """ 
@@ -123,15 +125,15 @@ def run_tests():
     Twb.set_translation(np.array([5, -8, 2.0]))
     R = Rot3().from_euler_zyx([0.0, 0.0, math.pi/2])
     Twb.set_rotation(R.R)
-    solutions_filepath = "../data/ray_mesh_intersect_solutions_pose2.npz"
+    solutions_filepath = qs_path+"/data/ray_mesh_intersect_solutions_pose2.npz"
     score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, True)
 
     world_frame_points = np.load(solutions_filepath)["world_frame_points"]
-    solutions_filepath = "../data/camera_frame_solutions_pose2.npz"
+    solutions_filepath = qs_path+"/data/camera_frame_solutions_pose2.npz"
     score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, True)
 
     camera_frame_points = np.load(solutions_filepath)["camera_frame_points"]
-    solutions_filepath = "../data/depth_image_solutions_pose2.npz"
+    solutions_filepath = qs_path+"/data/depth_image_solutions_pose2.npz"
     score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, True)
 
     return score

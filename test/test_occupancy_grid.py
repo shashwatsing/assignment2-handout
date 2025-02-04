@@ -9,13 +9,15 @@ import open3d as o3d
 import cv2
 import yaml
 
-sys.path.append('../')
+import os
+qs_path = os.path.dirname(os.path.abspath(__file__))+'/..'
+sys.path.append(qs_path)
 
 from quadrotor_simulator_py.map_tools import OccupancyGrid, Cell, Point
 from quadrotor_simulator_py.sensor_simulator import SensorSimulator
 from quadrotor_simulator_py.utils import Pose
 from quadrotor_simulator_py.utils import Rot3
-from quadrotor_simulator_py.map_tools.visualizer import *
+from quadrotor_simulator_py.visualizer.visualizer import *
 
 def common_elements_count_loop(list1, list2):
     return sum(1 for elem in set(list1) if elem in list2)
@@ -120,7 +122,7 @@ def test_occupancy_grid_map(DATA_DIR, config, environment_name, meshfile, visual
     #np.savez(environment_name + "_solutions.npz", correct_occ_indices=indices_occ,
     #         correct_free_indices=indices_free)
     
-    data = np.load("../data/" + environment_name + "_solutions.npz")
+    data = np.load(qs_path+"/data/" + environment_name + "_solutions.npz")
     
     common_occ_indices = common_elements_count_loop(data["correct_occ_indices"], indices_occ)
     common_free_indices = common_elements_count_loop(data["correct_free_indices"], indices_free)
@@ -131,5 +133,5 @@ def test_occupancy_grid_map(DATA_DIR, config, environment_name, meshfile, visual
     print("Score of " + str(round(score, 1)*100) + "%")
 
 if __name__ == "__main__":
-    test_occupancy_grid_map("../data/", "../config/map.yaml", "environment1", "../mesh/environment1.ply")
-    test_occupancy_grid_map("../data/", "../config/map.yaml", "environment2", "../mesh/environment2.ply")
+    test_occupancy_grid_map(qs_path+"/data/", qs_path+"/config/map.yaml", "environment1", qs_path+"/mesh/environment1.ply")
+    test_occupancy_grid_map(qs_path+"/data/", qs_path+"/config/map.yaml", "environment2", qs_path+"/mesh/environment2.ply")
