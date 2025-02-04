@@ -271,7 +271,7 @@ class OccupancyGrid:
                     existing value in the cell)
         """
         # TODO Assignment 2.2
-        pass
+        raise Exception("not implemented")
 
     def occupied(self, logodds_value):
         """
@@ -311,7 +311,7 @@ class OccupancyGrid:
             logoods (float) that represents the probability in log odds
         """
         # TODO Assignment 2.2
-        return 0.0
+        raise Exception("not implemented")
 
     def probability(self, logodds):
         """
@@ -321,7 +321,7 @@ class OccupancyGrid:
             logoods (float) that represents the probability in log odds
         """
         # TODO Assignment 2.2
-        return 0.5
+        raise Exception("not implemented")
 
     def point_in_grid(self, point):
         """
@@ -360,7 +360,7 @@ class OccupancyGrid:
             passed in
         """
         # TODO Assignment 2.2
-        return Cell()
+        raise Exception("not implemented")
 
     def cell2index(self, cell):
         """
@@ -371,7 +371,7 @@ class OccupancyGrid:
                 that corresponds to the cell class object
         """
         # TODO Assignment 2.2
-        return np.uint64(0)
+        raise Exception("not implemented")
 
     def cell2point(self, cell):
         """
@@ -382,7 +382,7 @@ class OccupancyGrid:
             point object representing the cell location in the grid
         """
         # TODO Assignment 2.2
-        return Point()
+        raise Exception("not implemented")
 
     def point2cell(self, p):
         """
@@ -393,7 +393,7 @@ class OccupancyGrid:
                 matches the point in the world frame coordinates
         """
         # TODO Assignment 2.2
-        return Cell()
+        raise Exception("not implemented")
 
     def world2map(self, w):
         """
@@ -624,4 +624,4 @@ class OccupancyGrid:
                       in free space or has hit an obstacle
         """
         # TODO Assignment 2.2
-        pass
+        raise Exception("not implemented")
