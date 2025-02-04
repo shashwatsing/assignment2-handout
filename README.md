@@ -21,7 +21,7 @@ source .venv/bin/activate
 ```
 You will need to install the following dependencies.
 ```python
-pip install scipy pyyaml numpy matplotlib scikit-learn open3d opencv-python
+pip install scipy pyyaml numpy matplotlib scikit-learn open3d opencv-python plyfile
 ```
 Download the assignment.
 ```bash
