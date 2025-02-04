@@ -105,15 +105,15 @@ def run_tests():
     Twb.set_translation(np.array([2, -1, 1.5]))
     Twb.set_rotation(np.eye(3))
     solutions_filepath = "../data/ray_mesh_intersect_solutions_pose1.npz"
-    score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, False)
+    score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, True)
 
     world_frame_points = np.load(solutions_filepath)["world_frame_points"]
     solutions_filepath = "../data/camera_frame_solutions_pose1.npz"
-    score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, False)
+    score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, True)
 
     camera_frame_points = np.load(solutions_filepath)["camera_frame_points"]
     solutions_filepath = "../data/depth_image_solutions_pose1.npz"
-    score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, False)
+    score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, True)
 
     """ 
     Test using second pose
@@ -123,15 +123,15 @@ def run_tests():
     R = Rot3().from_euler_zyx([0.0, 0.0, math.pi/2])
     Twb.set_rotation(R.R)
     solutions_filepath = "../data/ray_mesh_intersect_solutions_pose2.npz"
-    score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, False)
+    score += test_ray_mesh_intersection(sensor_simulator, Twb, solutions_filepath, meshfile, True)
 
     world_frame_points = np.load(solutions_filepath)["world_frame_points"]
     solutions_filepath = "../data/camera_frame_solutions_pose2.npz"
-    score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, False)
+    score += test_transform_to_camera_frame(sensor_simulator, Twb, world_frame_points, solutions_filepath, meshfile, True)
 
     camera_frame_points = np.load(solutions_filepath)["camera_frame_points"]
     solutions_filepath = "../data/depth_image_solutions_pose2.npz"
-    score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, False)
+    score += test_project_to_image_plane(sensor_simulator, camera_frame_points, solutions_filepath, True)
 
     return score
 
