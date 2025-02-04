@@ -1,0 +1,21 @@
+depth_camera:
+  to_meters: 0.001 # divide pixel value by 1000 to get meters
+  rate: 1
+  fov: # in degrees
+    x: 89.57
+    y: 59.24
+  size: # number of pixels in the image
+    x: 100
+    y: 60
+  range_min: 0.0
+  range_max: 5.2
+  trimmed_range_max: 5.0
+  offset:
+    x: 0.210546
+    y: -0.0630657
+    z: -0.0984911
+    roll: -1.6574
+    pitch: 0.0
+    yaw: -1.6039
+  noise:
+    sigma: 0.01
