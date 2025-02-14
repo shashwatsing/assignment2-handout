@@ -332,7 +332,7 @@ class OccupancyGrid:
             boolean that represents the point is in the grid (True) or
                 not in the grid (False)
         """
-        index = self.point2index(point - self.origin)
+        index = self.point2index(point)
         if index < 0 or index >= len(self.data):
             return False
         return True
