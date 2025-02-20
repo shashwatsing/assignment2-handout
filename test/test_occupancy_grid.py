@@ -57,6 +57,35 @@ def generate_circle_inward_poses(radius=3.5, num_points=36):
 
     return positions, orientations
 
+def test_conversions(config):
+    og = OccupancyGrid(config)
+
+    correct_point1 = Point(-28.0, -35.0, 20.0)
+    correct_cell1 = Cell(0, 14, 44)
+    correct_index1 = 1444
+
+    student_point1 = og.index2point(correct_index1)
+    student_cell1 = og.index2cell(correct_index1)
+    student_index1 = og.cell2index(correct_cell1)
+
+    assert(student_point1 == correct_point1)
+    assert(student_cell1 == correct_cell1)
+    assert(student_index1 == correct_index1)
+
+    correct_point2 = Point(26.5, 2.5, 20.5)
+    correct_cell2 = Cell(75, 123, 45)
+    correct_index2 = 1512345
+
+    student_point2 = og.index2point(correct_index2)
+    student_cell2 = og.index2cell(correct_index2)
+    student_index2 = og.point2index(correct_point2)
+
+    assert(student_point2 == correct_point2)
+    assert(student_cell2 == correct_cell2)
+    assert(student_index2 == correct_index2)
+
+    print('Map conversions success')
+
 def test_occupancy_grid_map(DATA_DIR, config, environment_name, meshfile, visualize=True):
     sensor_simulator = SensorSimulator(config, meshfile)
     og = OccupancyGrid(config)
@@ -133,5 +162,6 @@ def test_occupancy_grid_map(DATA_DIR, config, environment_name, meshfile, visual
     print("Score of " + str(round(score, 1)*100) + "%")
 
 if __name__ == "__main__":
+    test_conversions(qs_path+"/config/map.yaml")
     test_occupancy_grid_map(qs_path+"/data/", qs_path+"/config/map.yaml", "environment1", qs_path+"/mesh/environment1.ply")
     test_occupancy_grid_map(qs_path+"/data/", qs_path+"/config/map.yaml", "environment2", qs_path+"/mesh/environment2.ply")
