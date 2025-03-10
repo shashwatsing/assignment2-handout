@@ -31,5 +31,6 @@ def set_robot_transforms():
     Twb = Pose(np.append(twb, Rwb.to_quat().data))
 
     # TODO: Assignment 1: Problem 1.10
-    return Pose()
+    Tcw = Twb.compose(Tbc)    
+    return Tcw
 

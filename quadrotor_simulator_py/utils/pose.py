@@ -52,8 +52,13 @@ class Pose:
         """  Return the composition of self.T * T
         """
 
-        # TODO: Assignment 1: Problem 1.8
-        return Pose()
+        # Perform matrix multiplication between the homogeneous transformation matrices
+        result_se3 = np.dot(self.se3, T.se3)
+
+        translation = result_se3[0:3, 3]
+        rotation_matrix = result_se3[0:3, 0:3]
+        quaternion = Rot3(rotation_matrix).to_quat().data
+        return Pose(np.concatenate([translation, quaternion]))
 
     # Take the inverse of a homogeneous transform
     def inverse(self):
@@ -65,5 +70,8 @@ class Pose:
                   of  the input
         """
 
-        # TODO: Assignment 1: Problem 1.9
-        return Pose()
+        inv_se3 = np.linalg.inv(self.se3)        
+        translation_inv = inv_se3[0:3, 3]
+        rotation_matrix_inv = inv_se3[0:3, 0:3]
+        quaternion_inv = Rot3(rotation_matrix_inv).to_quat().data        
+        return Pose(np.concatenate([translation_inv, quaternion_inv]))
